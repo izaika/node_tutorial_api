@@ -98,29 +98,12 @@ httpsServer.listen(config.httpsPort, () => {
 });
 
 // Define the handlers
-const handlers = {};
-
-// Sample handler
-handlers.sample = data =>
-  new Promise(resolve => {
-    // Callback a http status code and a payload object
-    resolve({
-      statusCode: 406,
-      payload: {
-        name: 'sample handler',
-      },
-    });
-  });
-
-// Not found handler
-handlers.notFound = data =>
-  new Promise(resolve => {
-    resolve({
-      statusCode: 404,
-    });
-  });
+const handlers = {
+  ping: () => new Promise(resolve => resolve({ statusCode: 200 })),
+  notFound: () => new Promise(resolve => resolve({ statusCode: 404 })),
+};
 
 // Define a request router
 const router = {
-  sample: handlers.sample,
+  ping: handlers.ping,
 };
