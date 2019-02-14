@@ -99,8 +99,8 @@ httpsServer.listen(config.httpsPort, () => {
 
 // Define the handlers
 const handlers = {
-  ping: () => new Promise(resolve => resolve({ statusCode: 200 })),
-  notFound: () => new Promise(resolve => resolve({ statusCode: 404 })),
+  ping: () => new Promise.resolve({ statusCode: 200 }),
+  notFound: () => new Promise.resolve({ statusCode: 404 }),
 };
 
 // Define a request router
